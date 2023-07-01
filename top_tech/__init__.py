@@ -23,4 +23,15 @@ def create_app(config_class=Config):
     login_manager.init_app(app)
     mail.init_app(app)
 
+    from top_tech.users.routes import users
+    from top_tech.posts.routes import posts
+    from top_tech.main.routes import main
+    from top_tech.errors.err_handlers import errors
+    app.register_blueprint(users)
+    app.register_blueprint(posts)
+    app.register_blueprint(main)
+    app.register_blueprint(errors)
+
+    return app
+
     
